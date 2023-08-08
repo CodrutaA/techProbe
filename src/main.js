@@ -1,4 +1,4 @@
-const productService = new ProductService('http://localhost:1113');
+const productService = new ProductService('http://localhost:1111');
 
 const displayProducts = async () => {
   const products = await productService.getProducts();
@@ -10,9 +10,8 @@ const displayProducts = async () => {
 const displayProduct = async productId => {
   const product = await productService.getProduct(productId);
   const productHtml = Object.entries(product).reduce(
-    (acc, [productDetailName, productDetailValue]) =>
-      acc + productDetailHtml(productDetailName, productDetailValue),
-    '<h3>Product details</h3>',
+    (acc, [productDetailName, productDetailValue]) => acc + productDetailHtml(productDetailName, productDetailValue),
+    '<h3>Product details</h3>'
   );
   document.getElementById('product').innerHTML = productHtml;
 };
@@ -28,9 +27,7 @@ function productHtml(product) {
 function productDetailHtml(name, value) {
   return (
     `<div class="productDetail">` +
-    `<span>${name}</span><span>${
-      value === 'shop' ? value.name + ', ' + value.location : value
-    }</span>` +
+    `<span>${name}</span><span>${value === 'shop' ? value.name + ', ' + value.location : value}</span>` +
     '</div>'
   );
 }

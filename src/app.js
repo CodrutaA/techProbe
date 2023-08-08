@@ -1,20 +1,26 @@
 const { getProduct, getProducts } = require('./ProductController');
+const path = require('path');
 
 const express = require('express');
-const cors = require('cors');
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:1112' }));
 
-// routes
+const serveFileFromRoot = relativePath => (_req, res) => res.sendFile(path.join(`${__dirname}/${relativePath}`));
+
 app
+  // frontend routes
+  .get('/health', (req, res) => {
+    res.status(200).send(`Server running on: ${req.protocol}://${req.get('Host')}`);
+  })
+  .get('/', serveFileFromRoot('index.html'))
+  .get('/ProductService', serveFileFromRoot('ProductService.js'))
+  .get('/main', serveFileFromRoot('main.js'))
+
+  // backend routes
   .get('/health', healthCheck)
   .get('/products', getProducts)
   .get('/products/:productId', getProduct);
-
-const portControll = process.env.PORT || 1113;
-app.listen(portControll, () => console.log(`Server listening on port: ${portControll}`));
 
 function healthCheck(_req, res) {
   res.status(200).send({
@@ -22,21 +28,5 @@ function healthCheck(_req, res) {
   });
 }
 
-const path = require('path');
-
-const serveFileFromRoot = relativePath => (_req, res) =>
-  res.sendFile(path.join(`${__dirname}/${relativePath}`));
-
-// routes
-app
-  .get('/health', (req, res) => {
-    res
-      .status(200)
-      .send(`Server running on: ${req.protocol}://${req.get('Host')}`);
-  })
-  .get('/', serveFileFromRoot('index.html'))
-  .get('/ProductService', serveFileFromRoot('ProductService.js'))
-  .get('/main', serveFileFromRoot('main.js'));
-
-const portService = process.env.PORT || 1112;
-app.listen(portService, () => console.log(`Server listening on port: ${portService}`));
+const port = process.env.PORT || 1111;
+app.listen(port, () => console.log(`Server listening on port: http://localhost:${port}`));
