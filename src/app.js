@@ -6,12 +6,15 @@ const app = express();
 
 app.use(express.json());
 
-const serveFileFromRoot = relativePath => (_req, res) => res.sendFile(path.join(`${__dirname}/${relativePath}`));
+const serveFileFromRoot = relativePath => (_req, res) =>
+  res.sendFile(path.join(`${__dirname}/${relativePath}`));
 
 app
   // frontend routes
   .get('/health', (req, res) => {
-    res.status(200).send(`Server running on: ${req.protocol}://${req.get('Host')}`);
+    res
+      .status(200)
+      .send(`Server running on: ${req.protocol}://${req.get('Host')}`);
   })
   .get('/', serveFileFromRoot('index.html'))
   .get('/ProductService', serveFileFromRoot('ProductService.js'))
@@ -29,4 +32,6 @@ function healthCheck(_req, res) {
 }
 
 const port = process.env.PORT || 1111;
-app.listen(port, () => console.log(`Server listening on port: http://localhost:${port}`));
+app.listen(port, () =>
+  console.log(`Server listening on port: http://localhost:${port}`),
+);
