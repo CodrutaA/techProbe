@@ -14,7 +14,7 @@ app
   .get('/products/:productId', getProduct);
 
 const portControll = process.env.PORT || 1113;
-app.listen(portControll, () => console.log(`Server listening on port: ${portControll}`));
+app.listen(portControll, () => console.log(`Server listening on port backend: ${portControll}`));
 
 function healthCheck(_req, res) {
   res.status(200).send({
@@ -39,4 +39,4 @@ app
   .get('/main', serveFileFromRoot('main.js'));
 
 const portService = process.env.PORT || 1112;
-app.listen(portService, () => console.log(`Server listening on port: ${portService}`));
+app.listen(portService, () => console.log(`Server listening on port frontend: ${portService}`));
