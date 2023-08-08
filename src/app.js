@@ -11,11 +11,6 @@ const serveFileFromRoot = relativePath => (_req, res) =>
 
 app
   // frontend routes
-  .get('/health', (req, res) => {
-    res
-      .status(200)
-      .send(`Server running on: ${req.protocol}://${req.get('Host')}`);
-  })
   .get('/', serveFileFromRoot('index.html'))
   .get('/ProductService', serveFileFromRoot('ProductService.js'))
   .get('/main', serveFileFromRoot('main.js'))
