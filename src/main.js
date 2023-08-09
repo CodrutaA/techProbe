@@ -10,8 +10,9 @@ const displayProducts = async () => {
 const displayProduct = async productId => {
   const product = await productService.getProduct(productId);
   const productHtml = Object.entries(product).reduce(
-    (acc, [productDetailName, productDetailValue]) => acc + productDetailHtml(productDetailName, productDetailValue),
-    '<h3>Product details</h3>'
+    (acc, [productDetailName, productDetailValue]) =>
+      acc + productDetailHtml(productDetailName, productDetailValue),
+    '<h3>Product details</h3>',
   );
   document.getElementById('product').innerHTML = productHtml;
 };
@@ -19,7 +20,9 @@ const displayProduct = async productId => {
 function productHtml(product) {
   return (
     `<div id="${product.id}" class="product" onclick="displayProduct(${product.id})">` +
-    `<span>${product.name}</span><span>${product.price}</span>` +
+    `<span>Product ${product.name}</span><span>Price ${product.price} ${product.currency}</span><span>Quantity ${product.stock}</span><span>Used ${product.used}</span>` +
+    `<button> Product details </button><span></span>` +
+    `<button> Add to cart </button>` +
     '</div>'
   );
 }
@@ -27,7 +30,9 @@ function productHtml(product) {
 function productDetailHtml(name, value) {
   return (
     `<div class="productDetail">` +
-    `<span>${name}</span><span>${value === 'shop' ? value.name + ', ' + value.location : value}</span>` +
+    `<span>${name}</span><span>${
+      value === 'shop' ? value.name + value.location : value
+    }</span>` +
     '</div>'
   );
 }
