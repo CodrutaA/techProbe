@@ -1,7 +1,7 @@
 {
   "name": "techprobe",
   "version": "1.0.0",
-  "description": "",
+  "description": "POC for testing e-comm app",
   "main": "app.js",
   "scripts": {
     "start": "nodemon --watch src src/app.js"
@@ -21,8 +21,6 @@
   },
   "devDependencies": {
     "jest": "^29.3.1",
-    "nodemon": "^3.0.1",
-    "wait-on": "^7.0.1",
-    "node-fetch": "^2.6.7"
+    "nodemon": "^3.0.1"
   }
 }

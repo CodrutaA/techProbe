@@ -3,7 +3,7 @@
     "id": 100,
     "name": "iphone 11",
     "price": 600,
-    "currency": "EUR",
+    "currency": "RON",
     "used": false,
     "stock": 99,
     "shop": {
@@ -15,7 +15,7 @@
     "id": 101,
     "name": "samsung s20",
     "price": 300,
-    "currency": "EUR",
+    "currency": "RON",
     "used": true,
     "stock": 3,
     "shop": {
@@ -37,9 +37,9 @@
   },
   {
     "id": 103,
-    "name": "tableta",
+    "name": "lenovo pad",
     "price": 242,
-    "currency": "USD",
+    "currency": "RON",
     "used": true,
     "stock": 4,
     "shop": {
@@ -63,7 +63,7 @@
     "id": 105,
     "name": "iphone 12",
     "price": 700,
-    "currency": "EUR",
+    "currency": "RON",
     "used": true,
     "stock": 99,
     "shop": {
@@ -85,9 +85,9 @@
   },
   {
     "id": 107,
-    "name": "TV samsung",
+    "name": "samsung LCD",
     "price": 5000,
-    "currency": "USD",
+    "currency": "RON",
     "used": false,
     "stock": 1,
     "shop": {
@@ -97,9 +97,9 @@
   },
   {
     "id": 108,
-    "name": "tableta apple",
+    "name": "ipad",
     "price": 343,
-    "currency": "USD",
+    "currency": "RON",
     "used": true,
     "stock": 4,
     "shop": {

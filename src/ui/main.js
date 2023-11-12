@@ -4,7 +4,10 @@ const displayProducts = async () => {
   const products = await productService.getProducts();
   const productsHtml = products.map(product => productHtml(product)).join('');
 
-  document.getElementById('products').innerHTML = productsHtml;
+  document.getElementById('products').innerHTML =
+    productsHeader() + productsHtml;
+
+  applyCart();
 };
 
 const displayProduct = async productId => {
@@ -17,12 +20,25 @@ const displayProduct = async productId => {
   document.getElementById('product').innerHTML = productHtml;
 };
 
+function productsHeader() {
+  return (
+    `<div id="products-header">` +
+    `<span class="name">Product</span>` +
+    `<span class="price">Price[RON]</span>` +
+    `<span class="stock">Quantity</span>` +
+    `<span class="used">Used</span>` +
+    '</div>'
+  );
+}
+
 function productHtml(product) {
   return (
-    `<div id="${product.id}" class="product" onclick="displayProduct(${product.id})">` +
-    `<span>Product ${product.name}</span><span>Price ${product.price} ${product.currency}</span><span>Quantity ${product.stock}</span><span>Used ${product.used}</span>` +
-    `<button> Product details </button><span></span>` +
-    `<button> Add to cart </button>` +
+    `<div id="${product.id}" class="product">` +
+    `<span class="name">${product.name}</span>` +
+    `<span class="price">${product.price} ${product.currency}</span>` +
+    `<span class="stock">${product.stock}</span>` +
+    `<span class="used">${product.used}</span>` +
+    `<button onclick="addToCart(${product.id})">Add to cart</button>` +
     '</div>'
   );
 }

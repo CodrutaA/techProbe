@@ -1,14 +1,6 @@
 // ProductService will be used in Browser and in NodeJS contract tests
 const isNodeJs = typeof window === 'undefined';
 
-if (isNodeJs) {
-  const fetch2 = require('node-fetch');
-
-  function fetch(...args) {
-    return fetch2(...args);
-  }
-}
-
 class ProductService {
   baseUrl;
 

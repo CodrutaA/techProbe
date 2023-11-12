@@ -7,13 +7,19 @@ const app = express();
 app.use(express.json());
 
 const serveFileFromRoot = relativePath => (_req, res) =>
-  res.sendFile(path.join(`${__dirname}/${relativePath}`));
+  res.sendFile(path.join(`${__dirname}/ui/${relativePath}`));
 
 app
   // frontend routes
   .get('/', serveFileFromRoot('index.html'))
-  .get('/ProductService', serveFileFromRoot('ProductService.js'))
+  .get('/style', serveFileFromRoot('style.css'))
   .get('/main', serveFileFromRoot('main.js'))
+
+  .get('/cartPage', serveFileFromRoot('cart.html'))
+  .get('/cart', serveFileFromRoot('cart.js'))
+  .get('/cart-style', serveFileFromRoot('cart-style.css'))
+
+  .get('/ProductService', serveFileFromRoot('ProductService.js'))
 
   // backend routes
   .get('/health', healthCheck)

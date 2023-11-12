@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Cart</title>
+  <meta charset="utf-8" lang="en">
+  <link rel="stylesheet" href="style">
+  <link rel="stylesheet" href="cart-style">
+  <script src="/ProductService"></script>
+  <script src="/cart"></script>
+</head>
+
+<body>
+  <h3>My cart<a class="float-right" href="/">Back to shopping</a></h3>
+
+  <button onclick="clearCart()">Clear my cart</button>
+
+  <div id="cart-products">
+  </div>
+  <div class="product" id="total-price"></div>
+
+  <script>
+    displayCartProducts();
+  </script>
+</body>
+
+</html>
