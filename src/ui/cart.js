@@ -52,10 +52,13 @@ function applyCart() {
       stockToUpdate.textContent = product.stock - quantity;
     });
   });
+  if (cartSize()) {
+    document.getElementById('cartSize').textContent = ` [${cartSize()}]`;
+  }
 }
 
 function cartSize() {
-  return Object.keys(getCart()).length;
+  return Object.values(getCart()).reduce((a, b) => a + b, 0);
 }
 
 function logCart() {
