@@ -110,12 +110,6 @@ function cartProductHtml(product) {
   );
 }
 
-function clearCart() {
-  document.getElementById('cart-products').innerHTML = '';
-  document.getElementById('total-price').innerHTML = '';
-  localStorage.clear();
-}
-
 function totalPriceHtml(totalPrice) {
   return (
     '<span class="name">Total</span>' +
@@ -124,6 +118,12 @@ function totalPriceHtml(totalPrice) {
     `<span class="price">${totalPrice} RON</span>` +
     '<button id="checkout" onclick="checkout()">Proceed to checkout</button>'
   );
+}
+
+function clearCart() {
+  document.getElementById('cart-products').innerHTML = '';
+  document.getElementById('total-price').innerHTML = '';
+  localStorage.clear();
 }
 
 function checkout() {
