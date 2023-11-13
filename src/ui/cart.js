@@ -13,15 +13,24 @@ function setCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function addToCart(productId) {
+async function addToCart(productId, isMainPage = true) {
   const cart = getCart();
-  if (cart[productId]) {
+  const cartQuantity = cart ? cart[productId] : 0;
+  const stock =
+    (await cartProductService.getProduct(productId)).stock - cartQuantity;
+  if (stock == 0) {
+    alert('Out of stock.');
+    return;
+  }
+  if (cartQuantity > 0) {
     cart[productId]++;
   } else {
     cart[productId] = 1;
   }
   setCart(cart);
-  applyCart();
+  if (isMainPage) {
+    applyCart();
+  }
   logCart();
 }
 
@@ -48,9 +57,17 @@ function applyCart() {
     const stockToUpdate = document.querySelector(
       `#products [id="${productId}"] .stock`,
     );
-    cartProductService.getProduct(productId).then(product => {
-      stockToUpdate.textContent = product.stock - quantity;
-    });
+    if (stockToUpdate != null) {
+      cartProductService.getProduct(productId).then(product => {
+        const newStock = product.stock - quantity;
+        stockToUpdate.textContent = newStock;
+        if (newStock == 0) {
+          document
+            .getElementById('products')
+            .removeChild(document.getElementById(productId));
+        }
+      });
+    }
   });
   if (cartSize()) {
     document.getElementById('cartSize').textContent = ` [${cartSize()}]`;
@@ -75,11 +92,7 @@ function displayCartProducts() {
       document.getElementById('cart-products').innerHTML +=
         cartProductHtml(product);
       document.getElementById('total-price').innerHTML =
-        `<span class="name">Total</span>` +
-        `<span class="stock"></span>` +
-        `<span class="used"></span>` +
-        `<span class="price">${totalPrice} RON</span>` +
-        `<button id="checkout" onclick="checkout()">Proceed to checkout</button>`;
+        totalPriceHtml(totalPrice);
     });
   });
 }
@@ -92,7 +105,7 @@ function cartProductHtml(product) {
     `<span class="used">${product.used}</span>` +
     `<span class="price">${product.price} ${product.currency}</span>` +
     `<button onclick="removeFromCart(${product.id}); location.reload();">-</button>` +
-    `<button onclick="addToCart(${product.id}); location.reload();">+</button>` +
+    `<button onclick="addToCart(${product.id}, false); location.reload();">+</button>` +
     '</div>'
   );
 }
@@ -101,6 +114,16 @@ function clearCart() {
   document.getElementById('cart-products').innerHTML = '';
   document.getElementById('total-price').innerHTML = '';
   localStorage.clear();
+}
+
+function totalPriceHtml(totalPrice) {
+  return (
+    '<span class="name">Total</span>' +
+    '<span class="stock"></span>' +
+    '<span class="used"></span>' +
+    `<span class="price">${totalPrice} RON</span>` +
+    '<button id="checkout" onclick="checkout()">Proceed to checkout</button>'
+  );
 }
 
 function checkout() {
