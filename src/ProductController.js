@@ -1,8 +1,7 @@
-const products = require('../data/products.json');
-
 function getProducts(_req, res) {
   try {
-    res.send(products);
+    const products = readProducts();
+    res.send(products.filter(isAvalilable));
   } catch (e) {
     console.log(e);
     res.status(500).send({ error: 'Failed to get products' });
@@ -10,16 +9,22 @@ function getProducts(_req, res) {
 }
 
 function getProduct(req, res) {
+  const products = readProducts();
   const productId = parseInt(req.params.productId);
   try {
     const product = { ...products.find(product => product.id === productId) };
-    //delete product.currency; // to break pact - missing the following keys: currency
-    //product.name = productId; // to break pact - wrong value
-    //product.id = '' + productId; // to break pact - wrong type
     res.send(product);
   } catch (e) {
     res.status(500).send({ error: `Failed to get product ${productId}` });
   }
+}
+
+function readProducts() {
+  return require('../data/products.json');
+}
+
+function isAvalilable(product) {
+  return product?.stock > 0;
 }
 
 module.exports = { getProduct, getProducts };
