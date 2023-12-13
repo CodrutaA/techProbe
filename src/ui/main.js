@@ -33,12 +33,12 @@ function productsHeader() {
 
 function productHtml(product) {
   return (
-    `<div id="${product.id}" class="product">` +
+    `<div id="row_${product.id}" class="product">` +
     `<span class="name">${product.name}</span>` +
     `<span class="price">${product.price} ${product.currency}</span>` +
     `<span class="stock">${product.stock}</span>` +
     `<span class="used">${product.used}</span>` +
-    `<button onclick="addToCart(${product.id})">Add to cart</button>` +
+    `<button class="addCart" onclick="addToCart(${product.id})">Add to cart</button>` +
     '</div>'
   );
 }
