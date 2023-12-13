@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" lang="en">
+    <script src="/ProductService"></script>
+    <script src="/main"></script>
+    <style>
+        div.product{
+            margin-top: 10px;
+            border: 1px dotted crimson;
+        }
+
+        #product{
+            margin-top: 50px;
+            border: 2px solid darkblue;
+            font-weight: bold;
+            color: blue;
+        }
+        
+        .btn-text-right{
+	        text-align: right;	
+        }
+
+    </style>
+</head>
+<body>
+
+  <h3>Cart</h3>
+
+  <div class="btn-text-right">
+    <a href="\">
+  	<button type="button" class="btn btn-primary">Back</button>
+  </a>
+  </div>
+
+  <div id="products">
+
+  </div>
+  
+  <div id="product">
+
+  </div>
+
+  <script>
+    displayCart();
+  </script>
+</body>
+</html>
