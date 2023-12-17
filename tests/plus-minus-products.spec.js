@@ -32,4 +32,33 @@ test('Plus/minus multiple items from the cart', async ({ page }) => {
   // Expects the cart to be visible
   await expect(page.locator('.myCart')).toContainText(['My cart']);
   await expect(page.locator('#cartSize')).toContainText('[2]');
+
+  // Check and add the third item to the cart
+  await expect(page.locator('#row_109 .name')).toContainText('samsung s8');
+  await expect(page.locator('#row_109 .price')).toContainText('100 RON');
+  await expect(page.locator('#row_109 .stock')).toContainText('1');
+  await expect(page.locator('#row_109 .used')).toContainText('true');
+
+  await page.click('#row_109 .addCart');
+
+  // Expects the cart to be visible
+  await expect(page.locator('.myCart')).toContainText(['My cart']);
+  await expect(page.locator('#cartSize')).toContainText('[3]');
+
+  //Add again th first item
+  await expect(page.locator('#row_100 .name')).toContainText('iphone 11');
+  await expect(page.locator('#row_100 .price')).toContainText('600 RON');
+  //   await expect(page.locator('#row_100 .stock')).toContainText('99');
+  await expect(page.locator('#row_100 .used')).toContainText('false');
+
+  await page.click('#row_100 .addCart');
+
+  await expect(page.locator('.myCart')).toContainText(['My cart']);
+  await expect(page.locator('#cartSize')).toContainText('[4]');
+
+  // Navigate to cart
+  await page.click('.myCart');
+
+  // Expects the cart to be visible
+  await expect(page.getByRole('heading', { name: 'My cart' })).toBeVisible();
 });
