@@ -18,7 +18,7 @@ jobs:
         run: npm install
 
       - name: Install Playwright Browsers
-        run: npm run playright:install
+        run: npm run playwright:install:browsers
 
       - name: Start Server
         run: npm start &
