@@ -4,7 +4,9 @@
   "description": "POC for testing e-comm app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --watch src src/app.js"
+    "start": "nodemon --watch src src/app.js",
+    "test": "playwright test",
+    "report": "npx playwright show-report"
   },
   "keywords": [
     "e-commerce",
