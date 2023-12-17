@@ -7,7 +7,8 @@
     "start": "nodemon --watch src src/app.js",
     "wait:for:server": "wait-on tcp::1111 -t 10s",
     "test": "playwright test",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "playwright:install": "npx playwright install --with-deps"
   },
   "keywords": [
     "e-commerce",
