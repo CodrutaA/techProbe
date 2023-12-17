@@ -1,5 +1,9 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
+const {
+  expectElementsNotVisible,
+  validateElementsText,
+} = require('./page-utils');
 
 test('Add/remove multiple items to the cart and check the total price', async ({
   page,
@@ -72,10 +76,14 @@ test('Add/remove multiple items to the cart and check the total price', async ({
 
   // Remove elements from the cart
   await page.click('#row_100 .minus');
-  await expect(page.locator('#row_104 .name')).not.toBeVisible;
-  await expect(page.locator('#row_104 .stock')).not.toBeVisible;
-  await expect(page.locator('#row_104 .used')).not.toBeVisible;
-  await expect(page.locator('#row_104 .price')).not.toBeVisible;
+
+  await expectElementsNotVisible(
+    page,
+    '#row_104 .name',
+    '#row_104 .stock',
+    '#row_104 .used',
+    '#row_104 .price',
+  );
 
   // Total price has been updated
   await expect(page.locator('#total-price .price')).toContainText(['500 RON']);
@@ -83,12 +91,14 @@ test('Add/remove multiple items to the cart and check the total price', async ({
   // Clear cart
   await page.click('.clearCart');
 
-  await expect(page.locator('#row_100 .name')).not.toBeVisible;
-  await expect(page.locator('#row_100 .stock')).not.toBeVisible;
-  await expect(page.locator('#row_100 .used')).not.toBeVisible;
-  await expect(page.locator('#row_100 .price')).not.toBeVisible;
-
-  await expect(page.locator('#total-price .name')).not.toBeVisible;
-  await expect(page.locator('#total-price .price')).not.toBeVisible;
-  await expect(page.locator('#checkout')).not.toBeVisible;
+  await expectElementsNotVisible(
+    page,
+    '#row_104 .name',
+    '#row_104 .stock',
+    '#row_104 .used',
+    '#row_104 .price',
+    '#total-price .name',
+    '#total-price .price',
+    '#checkout',
+  );
 });
