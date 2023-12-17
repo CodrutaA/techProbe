@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --watch src src/app.js",
+    "wait:for:server": "wait-on tcp::1111 -t 10s",
     "test": "playwright test",
     "report": "npx playwright show-report"
   },
