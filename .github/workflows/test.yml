@@ -12,6 +12,11 @@ on:
         required: true
         type: boolean
         default: true
+      deploy:
+        description: Deploy to TEST
+        required: true
+        type: boolean
+        default: false
   push:
     branches:
       - main
@@ -83,6 +88,7 @@ jobs:
         run: npm run cy
 
   deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.inputs.deploy
     name: Deploy to TEST (fake)
     needs:
       - unit-tests
