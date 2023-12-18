@@ -2,7 +2,6 @@ const { defineConfig } = require('cypress');
 
 const config = {
   supportFile: 'cypress/support/e2e.js',
-  specPattern: 'cypress/e2e/{features/**/*.feature,spec/**/*.js}',
   experimentalSessionAndOrigin: true,
   video: false,
   screenshotOnRunFailure: false,
