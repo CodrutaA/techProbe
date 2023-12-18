@@ -11,6 +11,7 @@
     "test": "playwright test",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "cypress open --browser chrome --e2e",
+    "cy": "start-server-and-test start 1111 cy:run",
     "report": "npx playwright show-report"
   },
   "keywords": [
@@ -30,7 +31,7 @@
     "@playwright/test": "^1.40.1",
     "cypress": "^13.6.1",
     "nodemon": "^3.0.1",
-    "wait-on": "^7.2.0"
+    "start-server-and-test": "^2.0.3"
   },
   "directories": {
     "test": "tests"

@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,12 +20,6 @@ jobs:
 
       - name: Install Playwright Browsers
         run: npm run playwright:install:browsers
-
-      - name: Start Server
-        run: npm start &
-
-      # - name: Wait for server to start
-      #   run: npm run wait:for:server
 
       - name: Run Playwright tests
         run: npm test
