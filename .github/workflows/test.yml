@@ -37,7 +37,7 @@ jobs:
   tests_cypress:
     name: Cypress E2E tests
     timeout-minutes: 10
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: cypress/included:12.2.0
 
     steps:
