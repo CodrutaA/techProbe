@@ -3,12 +3,12 @@ const { expect } = require('chai');
 const url = urlPath => `http://localhost:1111${urlPath}`;
 
 describe('API Smoke Test', () => {
-  test('Backend is healthy', async () => {
+  beforeAll(async () => {
     try {
       const healthResponse = await fetch(url('/health'));
       expect(
         healthResponse.status,
-        `Service is not healthy: ${healthResponse.statusText}`,
+        `Backend service is not healthy: ${healthResponse.statusText}`,
       ).to.equal(200);
       const jsonResponse = await healthResponse.json();
       expect(jsonResponse.healthy, `Service is not healthy`).to.be.true;

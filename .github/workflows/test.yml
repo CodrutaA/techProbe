@@ -33,7 +33,7 @@ jobs:
       - run: echo "Successfull unit tests"
 
   api-tests:
-    name: API tests (fake)
+    name: API tests
     needs: unit-tests
     timeout-minutes: 5
     runs-on: ubuntu-latest
