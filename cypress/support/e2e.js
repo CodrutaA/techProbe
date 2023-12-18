@@ -12,9 +12,17 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
+import './commands';
 
-// Import commands.js using ES2015 syntax:
-import './commands'
+if (Cypress.config('hideXHR')) {
+  const app = window.top;
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+  if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
+    const style = app.document.createElement('style');
+    style.innerHTML =
+      '.command-name-request, .command-name-xhr { display: none }';
+    style.setAttribute('data-hide-command-log-request', '');
+
+    app.document.head.appendChild(style);
+  }
+}

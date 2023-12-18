@@ -1,14 +1,17 @@
-name: Playwright Tests
+name: Tests
 on:
+  workflow_dispatch:
   push:
     branches: [main, master]
   pull_request:
     branches: [main, master]
 
 jobs:
-  test:
+  test_playwright:
+    name: Playwright E2E tests
     timeout-minutes: 10
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -30,3 +33,19 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+  tests_cypress:
+    name: Cypress E2E tests
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    container: cypress/included:12.3.0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm run cy

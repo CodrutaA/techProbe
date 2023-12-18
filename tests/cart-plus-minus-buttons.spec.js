@@ -5,7 +5,9 @@ const {
   validateElementsText,
 } = require('./page-utils');
 
-test('Plus/minus multiple items from the cart', async ({ page }) => {
+test('Can add/remove items via +/- buttons from Cart page', async ({
+  page,
+}) => {
   await page.goto('http://localhost:1111/');
 
   // Check and add first item to the cart

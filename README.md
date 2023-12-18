@@ -11,3 +11,17 @@ npm install
 ```bash
 npm start
 ```
+
+## Run tests
+
+- Playwright tests
+
+```bash
+npm run test
+```
+
+- Cypress tests
+
+```bash
+npm run cy
+```
