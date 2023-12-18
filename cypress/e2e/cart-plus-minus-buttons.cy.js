@@ -137,8 +137,6 @@ describe('Cart page', () => {
 
     //Remove products from the cart
     cy.get('#row_100 .minus').click();
-    cy.get('#row_100 .minus').click();
-    cy.get('#row_100 .minus').click();
 
     cy.get('#row_100 .name').should('not.exist');
     cy.get('#row_100 .stock').should('not.exist');
