@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const url = urlPath => `http://127.0.0.1:1111${urlPath}`;
+const url = urlPath => `http://localhost:1111${urlPath}`;
 
 describe('API Smoke Test', () => {
   test('Backend is healthy', async () => {
@@ -9,7 +9,7 @@ describe('API Smoke Test', () => {
       expect(
         healthResponse.status,
         `Service is not healthy: ${healthResponse.statusText}`,
-      ).to.equal(201);
+      ).to.equal(200);
       const jsonResponse = await healthResponse.json();
       expect(jsonResponse.healthy, `Service is not healthy`).to.be.true;
     } catch (error) {
