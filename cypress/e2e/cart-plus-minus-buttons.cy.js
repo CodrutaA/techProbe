@@ -128,6 +128,7 @@ describe('Cart page', () => {
 
     //Add products to the cart ( workaround)
     cy.get('#row_100 .plus').click();
+    cy.get('#row_100 .plus').click();
 
     cy.get('#row_100 .stock').should('contain.text', '3');
     cy.get('#total-price .price').should('contain.text', '1900 RON');
