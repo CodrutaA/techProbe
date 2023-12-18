@@ -139,9 +139,6 @@ test('Can add/remove items via +/- buttons from Cart page', async ({
 
   //Add products to the cart ( workaround)
   await page.click('#row_100 .plus');
-  await page.click('#row_100 .plus');
-  await page.click('#row_100 .plus');
-  await page.click('#row_100 .plus');
 
   await expect(page.locator('#row_100 .stock')).toContainText(['3']);
   await expect(page.locator('#total-price .price')).toContainText(['1900 RON']);
