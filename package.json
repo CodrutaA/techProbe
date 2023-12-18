@@ -6,9 +6,10 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon --watch src src/app.js",
-    "wait:for:server": "wait-on tcp::1111 -t 10s",
+    "wait:for:server": "wait-on tcp::1111 --timeout 10s",
     "playwright:install:browsers": "playwright install --with-deps",
-    "test": "playwright test",
+    "test:api": "jest tests/api",
+    "playwright:test": "playwright test",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "cypress open --browser chrome --e2e",
     "cy": "start-server-and-test start 1111 cy:run",
@@ -29,9 +30,12 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.40.1",
+    "chai": "^4.3.10",
     "cypress": "^13.6.1",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.1",
-    "start-server-and-test": "^2.0.3"
+    "start-server-and-test": "^2.0.3",
+    "wait-on": "^7.2.0"
   },
   "directories": {
     "test": "tests"

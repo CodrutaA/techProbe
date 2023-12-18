@@ -38,7 +38,18 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Successfull API tests"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Start server
+        run: npm start &
+      - name: Wait for server to start
+        run: npm run wait:for:server
+      - name: API test
+        run: npm run test:api
 
   e2e-playwright-tests:
     if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.playwright == 'true' }}
@@ -60,7 +71,7 @@ jobs:
         run: npm run playwright:install:browsers
 
       - name: Run Playwright tests
-        run: npm test
+        run: npm run playwright:test
 
       - uses: actions/upload-artifact@v3
         if: always()
