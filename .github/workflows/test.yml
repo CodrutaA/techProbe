@@ -1,6 +1,17 @@
 name: Tests
 on:
   workflow_dispatch:
+    inputs:
+      cypress:
+        description: Cypress E2E tests
+        required: true
+        type: boolean
+        default: true
+      playwright:
+        description: Playwright E2E tests
+        required: true
+        type: boolean
+        default: true
   push:
     branches:
       - main
@@ -25,6 +36,7 @@ jobs:
       - run: echo "Successfull API tests"
 
   test_playwright:
+    if: github.event_name != 'workflow_dispatch' || github.event.inputs.playwright
     name: Playwright E2E tests
     needs: api-tests
     timeout-minutes: 10
@@ -53,6 +65,7 @@ jobs:
           retention-days: 30
 
   tests_cypress:
+    if: github.event_name != 'workflow_dispatch' || github.event.inputs.cypress
     name: Cypress E2E tests
     needs: api-tests
     timeout-minutes: 10
