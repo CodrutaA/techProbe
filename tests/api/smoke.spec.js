@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const url = urlPath => `http://localhost:1111${urlPath}`;
+const url = urlPath => `http://127.0.0.1:1111${urlPath}`;
 
 describe('API Smoke Test', () => {
   test('Backend is healthy', async () => {
