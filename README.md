@@ -1,5 +1,7 @@
 # techProbe
 
+![Tests](https://github.com/CodrutaA/techProbe/actions/workflows/test.yaml/badge.svg)
+
 ## Install project
 
 ```bash
