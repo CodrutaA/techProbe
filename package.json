@@ -11,6 +11,7 @@
     "test:api": "jest tests/api",
     "playwright:test": "playwright test",
     "playwright:test:ui": "playwright test --ui",
+    "playwright:report": "playwright show-report",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "cypress open --browser chrome --e2e",
     "cy": "start-server-and-test start 1111 cy:run",
@@ -22,7 +23,7 @@
     "testing"
   ],
   "author": "Codruta Avram",
-  "license": "ISC",
+  "license": "MIT",
   "engines": {
     "node": ">16.0.0"
   },

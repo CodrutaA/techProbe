@@ -58,8 +58,15 @@ npm run test:api
 - Playwright
 
 ```bash
+# install browsers
+npm run playwright:install:browsers
+
+# run tests
 npm run playwright:test
-#report is generated to playwright-report/index.html
+
+# report is generated to playwright-report/index.html
+# show report
+npm run playwright:report
 ```
 
 - Cypress
