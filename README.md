@@ -14,16 +14,22 @@ npm install
 npm start
 ```
 
-## Run tests
+## Tests
 
-- Playwright tests
+- [API tests](./tests/api/)
 
 ```bash
-npm run test
+npm run test:api
 ```
 
-- Cypress tests
+- [Playwright tests](./tests/e2e/)
 
 ```bash
-npm run cy
+npm run testplaywright:test
+```
+
+- [Cypress tests](./cypress/e2e/)
+
+```bash
+npm run cy:run
 ```
