@@ -4,6 +4,33 @@
 
 ## Arhitecture
 
+- [Application source](./src)
+
+```
+`-- src
+    -- ui
+        `-- Services
+    `-- Application
+```
+
+- [Cypress tests](./cypress/e2e/)
+
+```
+`-- cypress
+    `-- e2e
+        `-- Test files
+```
+
+- [Playwright tests](./tests/e2e/)
+
+```
+`-- tests
+    `-- e2e
+        `-- Test files
+```
+
+## PIPELINE
+
 ## Install project
 
 ```bash
@@ -35,5 +62,3 @@ npm run testplaywright:test
 ```bash
 npm run cy:run
 ```
-
-## PIPELINE
