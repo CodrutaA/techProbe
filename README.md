@@ -44,14 +44,15 @@ npm start
 ```
 
 ## Tests
-
-- [API tests](./tests/api/)
-  Tests can be triggered in 2 ways
+Tests can be triggered in 2 ways
 
 ```
 -- manual
 -- PR to main branch
 ```
+
+- [API tests](./tests/api/)
+  The API tests verify if the server is up and running (url**/health** check)
 
 ```bash
 npm run test:api
@@ -65,14 +66,14 @@ npm run testplaywright:test
 ```
 
 Report of the tests is generated on
-
+- [Playwright reports](./playwright-report/index.html)
 ```
 `-- playwright-report
     `-- index.html
 ```
 
 - [Cypress tests](./cypress/e2e/)
-  If the tests are triggered automatically from the PR the tests will run on a docker container
+- If the tests are triggered automatically from the PR the tests will run on a docker container
 
 ```bash
 npm run cy:run
