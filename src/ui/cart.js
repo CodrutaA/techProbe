@@ -105,7 +105,7 @@ function cartProductHtml(product) {
     `<span class="used">${product.used}</span>` +
     `<span class="price">${product.price} ${product.currency}</span>` +
     `<button class="minus" onclick="removeFromCart(${product.id}); location.reload();">-</button>` +
-    `<button class="plus" onclick="addToCart(${product.id}, false); location.reload();">+</button>` +
+    `<button class="plus" onclick="addToCart(${product.id}, false).then(()=>{ location.reload(); });">+</button>` +
     '</div>'
   );
 }
