@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
-const { validateCartSize } = require('../support/pages/Cart');
+const { validateCartSize, checkTotalPrice } = require('../support/pages/Cart');
 const { addToCart, navigateToCart } = require('../support/pages/Home');
+const { validateProductRow } = require('../support/pages/Common');
+
+const [FIRST_TEST_PRODUCT] = require('../fixtures/test-products.json');
 
 describe('Add an item to the cart and check the total price', () => {
   beforeEach(() => {
@@ -12,11 +15,7 @@ describe('Add an item to the cart and check the total price', () => {
     validateCartSize(1);
     navigateToCart();
 
-    // Expects to have the product in the cart
-    cy.get('#row_100 .name').should('contain.text', 'iphone 11');
-    cy.get('#row_100 .stock').should('contain.text', '1');
-    cy.get('#row_100 .used').should('contain.text', 'false');
-    cy.get('#row_100 .price').should('contain.text', '600 RON');
+    validateProductRow(FIRST_TEST_PRODUCT, 1);
 
     cy.get('#row_100 .minus').should('contain.text', '-');
     cy.get('#row_100 .minus').should('be.enabled');
@@ -24,10 +23,9 @@ describe('Add an item to the cart and check the total price', () => {
     cy.get('#row_100 .plus').should('contain.text', '+');
     cy.get('#row_100 .plus').should('be.enabled');
 
-    //Check the total and payment button to be available
-    cy.get('#total-price .name').should('contain.text', 'Total');
-    cy.get('#total-price .price').should('contain.text', '600 RON');
+    checkTotalPrice('600 RON');
 
+    //Check the payment button to be available
     cy.get('#checkout').should('contains.text', 'Proceed to checkout');
     cy.get('#checkout').should('be.enabled');
   });

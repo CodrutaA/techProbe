@@ -1,0 +1,14 @@
+[
+  {
+    "id": 100,
+    "name": "iphone 11",
+    "price": "600 RON",
+    "used": false
+  },
+  {
+    "id": 104,
+    "name": "amsung s21",
+    "price": "500 RON",
+    "used": true
+  }
+]
