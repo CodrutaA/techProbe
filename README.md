@@ -14,7 +14,7 @@
         
     - [Cart page](./src/ui/cart.html)
    
-  - [Backend]((./src/app.js) - Express web server listening on _http://localhost:1111_
+  - [Backend](./src/app.js) - Express web server listening on _http://localhost:1111_
 
     - Endpoints
       
