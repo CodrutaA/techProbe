@@ -1,9 +1,5 @@
 const productIsNotDisplayed = productd => {
-  const rowId = `#row_${productd}`;
-  cy.get(`${rowId} .name`).should('not.exist');
-  cy.get(`${rowId} .stock`).should('not.exist');
-  cy.get(`${rowId} .used`).should('not.exist');
-  cy.get(`${rowId} .price`).should('not.exist');
+  cy.get(`#row_${productd}`).should('not.exist');
 };
 
 const plusProduct = productId => {
