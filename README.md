@@ -8,15 +8,15 @@
 
 - [Application source](./src)
 
-  - [frontend]((./src/ui)
+  - [Frontend](./src/ui)
     
     - [Home page](./src/ui/index.html)
         
     - [Cart page](./src/ui/cart.html)
    
-  - [backend]((./src/app.js) - Express web server listening on _http://localhost:1111_
+  - [Backend]((./src/app.js) - Express web server listening on _http://localhost:1111_
 
-    - endpoints
+    - Endpoints
       
       - _/health_
         
