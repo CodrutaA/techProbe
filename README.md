@@ -62,7 +62,7 @@ npm run test:api
 - Playwright
   
 ```bash
-npm run testplaywright:test
+npm run playwright:test
 #report is generated to playwright-report/index.html
 ```
 
