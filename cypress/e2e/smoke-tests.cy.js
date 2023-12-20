@@ -12,7 +12,6 @@ describe('Smoke tests', () => {
   });
 
   it('Home page has correct title', () => {
-    // Expect a title "to contain" a substring.
     cy.title().should('have.string', 'e-shop');
   });
 
