@@ -26,7 +26,7 @@ on:
 
 jobs:
   unit-tests:
-    name: Unit tests (fake)
+    name: Unit tests
     timeout-minutes: 1
     runs-on: ubuntu-latest
     steps:
@@ -100,7 +100,7 @@ jobs:
 
   deploy:
     if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'true' }}
-    name: Deploy to TEST (fake)
+    name: Deploy to TEST
     needs:
       - unit-tests
       - api-tests
