@@ -1,6 +1,6 @@
 # techProbe
 
-![Tests](https://github.com/CodrutaA/techProbe/actions/workflows/test.yaml/badge.svg)
+![Tests](https://github.com/CodrutaA/techProbe/actions/workflows/test.yml/badge.svg)
 
 ## Install project
 
