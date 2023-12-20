@@ -7,29 +7,18 @@
 - [Application source](./src)
 
 ```
-`-- src
-    -- ui
-        `-- Services
-    `-- Application
+-- src
+  -- ui
+    -- Services
+  -- Application
 ```
 
-- [Cypress tests](./cypress/e2e/)
+- [API tests - tests/api/**/*.spec.js](./tests/api/)
+  
+- [Cypress tests - cypress/e2e/**/*.cy.js](./cypress/e2e/)
 
-```
-`-- cypress
-    `-- e2e
-        `-- Test files
-```
+- [Playwright tests - tests/e2e/**/*.spec.js](./tests/e2e/)
 
-- [Playwright tests](./tests/e2e/)
-
-```
-`-- tests
-    `-- e2e
-        `-- Test files
-```
-
-## PIPELINE
 
 ## Install project
 
@@ -43,38 +32,31 @@ npm install
 npm start
 ```
 
+## Pipeline
+
+- triggering
+  
+    - manual
+    - 
+    - PR to `main` branch      
+
 ## Tests
-Tests can be triggered in 2 ways
 
-```
--- manual
--- PR to main branch
-```
-
-- [API tests](./tests/api/)
-  The API tests verify if the server is up and running (url**/health** check)
-
+- API
+- 
 ```bash
 npm run test:api
 ```
 
-- [Playwright tests](./tests/e2e/)
-  If the tests are triggered automatically from the PR the tests will run on a ubuntu machine
-
+- Playwright
+  
 ```bash
 npm run testplaywright:test
+#report is generated to playwright-report/index.html
 ```
 
-Report of the tests is generated on
-- [Playwright reports](./playwright-report/index.html)
-```
-`-- playwright-report
-    `-- index.html
-```
-
-- [Cypress tests](./cypress/e2e/)
-- If the tests are triggered automatically from the PR the tests will run on a docker container
-
+- Cypress
+  
 ```bash
-npm run cy:run
+npm run cy
 ```
