@@ -10,6 +10,7 @@
     "playwright:install:browsers": "playwright install --with-deps",
     "test:api": "jest tests/api",
     "playwright:test": "playwright test",
+    "playwright:test:ui": "playwright test --ui",
     "cy:run": "cypress run --browser chrome",
     "cy:open": "cypress open --browser chrome --e2e",
     "cy": "start-server-and-test start 1111 cy:run",

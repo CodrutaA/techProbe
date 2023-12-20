@@ -34,4 +34,8 @@ describe('API Smoke Test', () => {
       throw new Error(`Routes issues: ${JSON.stringify(routesErrors)}`);
     }
   });
+
+  test.todo('/products returns an array of products');
+
+  test.todo('/products/100 returns valid product');
 });
