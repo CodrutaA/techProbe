@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+const { validateCartSize } = require('../support/pages/Cart');
+const { addToCart, navigateToCart } = require('../support/pages/Home');
 
 describe('Add an item to the cart and check the total price', () => {
   beforeEach(() => {
@@ -6,18 +8,9 @@ describe('Add an item to the cart and check the total price', () => {
   });
 
   it('Add an item to the cart and check the total price', () => {
-    // Add first item to the cart
-    cy.get('#row_100 .addCart').click();
-
-    // Expects the cart to be visible
-    cy.get('.myCart').should('contain.text', 'My cart');
-    cy.get('#cartSize').should('contain.text', '[1]');
-
-    // Navigate to cart
-    cy.get('.myCart').click();
-
-    // Expects the cart to be visible
-    cy.title().should('have.string', 'Cart');
+    addToCart(100);
+    validateCartSize(1);
+    navigateToCart();
 
     // Expects to have the product in the cart
     cy.get('#row_100 .name').should('contain.text', 'iphone 11');

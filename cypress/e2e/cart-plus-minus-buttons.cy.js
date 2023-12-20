@@ -7,7 +7,7 @@ const {
   checkTotalPrice,
 } = require('../support/pages/Cart');
 
-const { addToCart } = require('../support/pages/Home');
+const { addToCart, navigateToCart } = require('../support/pages/Home');
 
 const FIRST_PRODUCT_ID = 100;
 const SECOND_PRODUCT_ID = 104;
@@ -18,15 +18,10 @@ describe('Cart page', () => {
   });
 
   it('Can add/remove items via +/- buttons', () => {
-    // Add items with id 100 and 104 to the cart
     addToCart(FIRST_PRODUCT_ID);
     addToCart(SECOND_PRODUCT_ID);
 
-    // Navigate to cart
-    cy.get('.myCart').click();
-
-    // Expects the cart to be visible
-    cy.title().should('have.string', 'Cart');
+    navigateToCart();
 
     // Expects to have product with id 100 in the cart
     cy.get('#row_100 .name').should('contain.text', 'iphone 11');
@@ -84,7 +79,8 @@ describe('Cart page', () => {
 
     minusProduct(FIRST_PRODUCT_ID);
     productIsNotDisplayed(FIRST_PRODUCT_ID);
+    cy.get('#total-price .nam').should('not.exist');
+    cy.get('#total-price .price').should('not.exist');
     cy.contains('#checkout', 'Proceed to checkout').should('not.exist');
-    cy.get('#total-price').should('have.text', '');
   });
 });

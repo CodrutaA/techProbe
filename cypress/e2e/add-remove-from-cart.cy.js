@@ -1,5 +1,14 @@
 /// <reference types="cypress" />
 
+const {
+  validateCartSize,
+  productIsNotDisplayed,
+  minusProduct,
+  checkTotalPrice,
+  clearCart,
+} = require('../support/pages/Cart');
+const { addToCart, navigateToCart } = require('../support/pages/Home');
+
 describe('Add/remove items to/from cart', () => {
   beforeEach(() => {
     cy.visit('http://localhost:1111/');
@@ -11,31 +20,18 @@ describe('Add/remove items to/from cart', () => {
     cy.get('#row_100 .stock').should('contain.text', '99');
     cy.get('#row_100 .used').should('contain.text', 'false');
     cy.get('#row_100 .price').should('contain.text', '600 RON');
-
-    cy.get('#row_100 .addCart').click();
-
-    cy.get('.myCart').should('contain.text', 'My cart');
-    cy.get('#cartSize').should('contain.text', '[1]');
-
-    // cy.get(#row_100 .stock).should('contain.text', '98');
+    addToCart(100);
+    validateCartSize(1);
 
     // Check and add the second item to the cart'
     cy.get('#row_104 .name').should('contain.text', 'samsung s21');
     cy.get('#row_104 .stock').should('contain.text', '1');
     cy.get('#row_104 .used').should('contain.text', 'true');
     cy.get('#row_104 .price').should('contain.text', '500 RON');
+    addToCart(104);
+    validateCartSize(2);
 
-    cy.get('#row_104 .addCart').click();
-
-    // Expects the cart to be visible
-    cy.get('.myCart').should('contain.text', 'My cart');
-    cy.get('#cartSize').should('contain.text', '[2]');
-
-    // Navigate to cart
-    cy.get('.myCart').click();
-
-    // Expects the cart to be visible
-    cy.title().should('have.string', 'Cart');
+    navigateToCart();
 
     // Expects to have the first product in the cart
     cy.get('#row_100 .name').should('contain.text', 'iphone 11');
@@ -62,32 +58,20 @@ describe('Add/remove items to/from cart', () => {
     cy.get('#row_104 .plus').should('be.enabled');
 
     //Check the total and payment button to be available
-    cy.get('#total-price .name').should('contain.text', 'Total');
-    cy.get('#total-price .price').should('contain.text', '1100 RON');
+    checkTotalPrice('1100 RON');
 
     cy.get('#checkout').should('contains.text', 'Proceed to checkout');
     cy.get('#checkout').should('be.enabled');
 
     // Remove elements from the cart
-    cy.get('#row_100 .minus').click();
-
-    cy.get('#row_100 .name').should('not.exist');
-    cy.get('#row_100 .stock').should('not.exist');
-    cy.get('#row_100 .used').should('not.exist');
-    cy.get('#row_100 .price').should('not.exist');
-
-    // Total price has been updated
-    cy.get('#total-price .price').should('contain.text', '500 RON');
+    minusProduct(100);
+    productIsNotDisplayed(100);
+    checkTotalPrice('500 RON');
 
     // Clear cart
-    cy.get('.clearCart').click();
+    clearCart();
 
-    cy.get('#row_104 .name').should('not.exist');
-    cy.get('#row_104 .stock').should('not.exist');
-    cy.get('#row_104 .used').should('not.exist');
-    cy.get('#row_104 .price').should('not.exist');
-
-    cy.get('#total-price .name').should('not.exist');
+    cy.get('#total-price .nam').should('not.exist');
     cy.get('#total-price .price').should('not.exist');
     cy.get('#checkout').should('not.exist');
   });
