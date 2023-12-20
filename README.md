@@ -1,5 +1,7 @@
 # techProbe
 
+## E-comm project for E2E testing POC with Cypress & Playwright
+
 ![Tests](https://github.com/CodrutaA/techProbe/actions/workflows/test.yml/badge.svg)
 
 ## Arhitecture
