@@ -8,12 +8,21 @@
 
 - [Application source](./src)
 
-```
--- src
-  -- ui
-    -- Services
-  -- Application
-```
+  - [frontend]((./src/ui)
+    
+    - [Home page](./src/ui/index.html)
+        
+    - [Cart page](./src/ui/cart.html)
+   
+  - [backend]((./src/app.js) - Express web server listening on _http://localhost:1111_
+
+    - endpoints
+      
+      - _/health_
+        
+      - _/products_
+        
+      - _/products/:productId_  
 
 - [API tests - tests/api/**/*.spec.js](./tests/api/)
   
