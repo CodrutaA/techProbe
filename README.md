@@ -37,13 +37,13 @@ npm start
 - triggering
   
     - manual
-    - 
+      
     - PR to `main` branch      
 
 ## Tests
 
 - API
-- 
+  
 ```bash
 npm run test:api
 ```
