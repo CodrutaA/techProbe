@@ -2,6 +2,8 @@
 
 ![Tests](https://github.com/CodrutaA/techProbe/actions/workflows/test.yml/badge.svg)
 
+## Arhitecture
+
 ## Install project
 
 ```bash
@@ -33,3 +35,5 @@ npm run testplaywright:test
 ```bash
 npm run cy:run
 ```
+
+## PIPELINE
