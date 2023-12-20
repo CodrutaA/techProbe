@@ -40,7 +40,7 @@ npm start
 
 ## Pipeline
 
-![pipeline_flow](./pipeline.png)
+![pipeline_flow](./pipeline_flow.png)
 
 - triggering
 
